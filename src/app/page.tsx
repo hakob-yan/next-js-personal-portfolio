@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef } from "react";
 import canvasAnimate from "../utils/animate";
-import NavBar from "@/layouts/NavBar";
+import NavBar from "@/components/NavBar";
 
 export default function Home() {
   const canvasElem = useRef<HTMLCanvasElement>(null);
