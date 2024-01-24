@@ -1,10 +1,13 @@
 import { IParticle, ILine, IGet, IFeaturePath, IMouse } from "./types";
 
-const radiusColor = "rgba(255,0,0,01)";
-const lineColor = "rgba(100, 100, 252,0.4)";
+const radiusColor = "rgba(255,0,0,0.1)";
+const lineColor = "rgba(233, 32, 79,0.3)";
 const circleColor = lineColor;
-const mouseColor = "rgba(200,0,255,1)";
-
+const mouseColor = "rgba(253, 32, 49,0.8)";
+const lineWidth = 1.5;
+const allowedRadius = 100;
+const nodeSize = 5;
+const allowedDistance = 170;
 function getXYSpeedByK(speedK: number, dx?: number, dy?: number) {
   const speed = { x: 0, y: 0 };
   if (dx !== undefined && dy !== undefined) {
@@ -73,8 +76,8 @@ export function get(canvas: HTMLCanvasElement): IGet {
       this.y = padding + Math.random() * (canvas.height - 2 * padding);
       this.initialX = this.x;
       this.initialY = this.y;
-      this.allowedRadius = 100;
-      this.size = 5;
+      this.allowedRadius = allowedRadius;
+      this.size = nodeSize;
       this.color = circleColor;
       this.speedX = speed.x;
       this.speedY = speed.y;
@@ -149,7 +152,7 @@ export function get(canvas: HTMLCanvasElement): IGet {
       this.y1 = y1;
       this.x2 = x2;
       this.y2 = y2;
-      this.allowedDistance = 170;
+      this.allowedDistance = allowedDistance;
       this.color = lineColor;
     }
     update(key: string, x: number, y: number, mouse: IMouse): void {
@@ -180,7 +183,7 @@ export function get(canvas: HTMLCanvasElement): IGet {
       if (d < this.allowedDistance) {
         ctx.beginPath();
         ctx.strokeStyle = this.color;
-        ctx.lineWidth = 1.5;
+        ctx.lineWidth = lineWidth;
         ctx.moveTo(this.x1, this.y1);
         ctx.lineTo(this.x2, this.y2);
         ctx.stroke();

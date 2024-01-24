@@ -7,9 +7,14 @@ const NAV_BAR = [
 ];
 function NavBar() {
   return (
-    <nav className="w-full flex justify-end items-center p-4 gap-x-4 bg-red-400 h-20">
+    <nav className="w-full flex justify-end items-center py-4 px-20 gap-x-20 bg-[var(--surface-primary)] h-20">
       {NAV_BAR.map((item) => (
-        <a key={item.title}>{item.title}</a>
+        <a
+          key={item.title}
+          className="cursor-pointer border-b-transparent hover:border-b-[var(--color-primary)] border-b-[0.2rem] pb-1 ease-in duration-200"
+        >
+          {item.title}
+        </a>
       ))}
     </nav>
   );

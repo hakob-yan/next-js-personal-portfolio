@@ -11,9 +11,13 @@ export default function Home() {
     return () => animate.end();
   }, []);
   return (
-    <main className="flex min-h-screen flex-col ">
-      <canvas className="fixed h-full w-full " ref={canvasElem}></canvas>
-      <NavBar />
-    </main>
+    <>
+      <header>
+        <NavBar />
+      </header>
+      <main className="flex min-h-screen flex-col ">
+        <canvas className="fixed h-full w-full -z-10" ref={canvasElem}></canvas>
+      </main>
+    </>
   );
 }
