@@ -1,13 +1,15 @@
 import { IParticle, ILine, IGet, IFeaturePath, IMouse } from "./types";
 
-const radiusColor = "rgba(255,0,0,0.1)";
-const lineColor = "rgba(233, 32, 79,0.3)";
-const circleColor = lineColor;
-const mouseColor = "rgba(253, 32, 49,0.8)";
-const lineWidth = 1.5;
-const allowedRadius = 100;
-const nodeSize = 5;
-const allowedDistance = 170;
+import {
+  lineColor,
+  circleColor,
+  mouseColor,
+  allowedRadius,
+  nodeSize,
+  allowedDistance,
+  lineWidth,
+} from "@/constants";
+
 function getXYSpeedByK(speedK: number, dx?: number, dy?: number) {
   const speed = { x: 0, y: 0 };
   if (dx !== undefined && dy !== undefined) {

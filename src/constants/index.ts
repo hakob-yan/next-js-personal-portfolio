@@ -1,0 +1,10 @@
+export const radiusColor = "rgba(255,0,0,0.1)";
+export const lineColor = "rgba(233, 32, 79,0.3)";
+export const circleColor = lineColor;
+export const mouseColor = "rgba(255, 12, 79,1)";
+export const lineWidth = 1.9;
+export const allowedRadius = 80;
+export const nodeSize = 5;
+export const allowedDistance = 100;
+export const mouseRadius = 150;
+export const crystalCount = 470;

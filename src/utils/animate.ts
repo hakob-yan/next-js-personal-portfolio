@@ -1,3 +1,4 @@
+import { crystalCount, mouseRadius } from "@/constants";
 import { get } from "./helper";
 import {
   IParticles,
@@ -29,7 +30,7 @@ export default function animate(canvas: HTMLCanvasElement): IAnimate {
   window.addEventListener("mousemove", (event) => {
     mouse.x = event.clientX + window.pageXOffset;
     mouse.y = event.clientY + window.pageYOffset;
-    mouse.radius = 250;
+    mouse.radius = mouseRadius;
   });
   canvas.addEventListener("mouseleave", () => {
     mouse.x = undefined;
@@ -88,7 +89,7 @@ export default function animate(canvas: HTMLCanvasElement): IAnimate {
     };
   }
 
-  let { particlesObj, linesObj, linesArr } = createCrystal(170);
+  let { particlesObj, linesObj, linesArr } = createCrystal(crystalCount);
   return {
     start: () => {
       (function animate() {
