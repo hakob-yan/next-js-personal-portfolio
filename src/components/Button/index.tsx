@@ -3,7 +3,7 @@ import {
   BUTTON_BASE,
   BUTTON_VARIANTS,
   type ButtonVariant,
-} from "@/constants/ui";
+} from "./types";
 
 type CommonProps = {
   variant?: ButtonVariant;
