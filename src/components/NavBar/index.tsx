@@ -13,6 +13,7 @@ import {
 import { SECTION_IDS } from "@/constants/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import useNavItemActive from "@/hooks/useNavItemActive";
+import Link from "next/link";
 
 // Map section IDs to proper icons
 const ICON_MAP: Record<string, React.ElementType> = {
@@ -53,14 +54,18 @@ const NavButton: React.FC<NavButtonProps> = ({
 
 // Profile Badge
 const ProfileBadge: React.FC = () => (
-  <div className="items-center gap-3 flex lg:hidden xl:flex">
-    <div className="flex flex-col leading-tight">
-      <span className="text-sm lg:text-base font-semibold">{PROFILE.name}</span>
-      <span className="text-xs lg:text-sm text-[var(--text-secondary)]">
-        {PROFILE.title}
-      </span>
+  <Link href={`#${SECTION_IDS.hero}`}>
+    <div className="items-center gap-3 flex lg:hidden xl:flex">
+      <div className="flex flex-col leading-tight">
+        <span className="text-sm lg:text-base font-semibold">
+          {PROFILE.name}
+        </span>
+        <span className="text-xs lg:text-sm text-[var(--text-secondary)]">
+          {PROFILE.title}
+        </span>
+      </div>
     </div>
-  </div>
+  </Link>
 );
 
 // Navigation Links

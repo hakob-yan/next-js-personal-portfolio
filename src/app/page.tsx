@@ -9,6 +9,7 @@ import { ArchitectureSection } from "@/components/sections/ArchitectureSection";
 import { ExperienceSection } from "@/components/sections/ExperienceSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { Reveal } from "@/components/Reveal";
+import { SECTION_IDS } from "@/constants/navigation";
 
 export default function Home() {
   const canvasElem = useRef<HTMLCanvasElement | null>(null);
@@ -47,7 +48,7 @@ export default function Home() {
         <NavBar />
       </header>
 
-      <main className="flex min-h-screen flex-col">
+      <main className="flex min-h-screen flex-col" id={SECTION_IDS.hero}>
         <canvas className="fixed h-full w-full -z-10" ref={canvasElem}></canvas>
         <div className="relative z-10 flex-1 pt-24 pb-16 px-6 md:px-20">
           <div className="max-w-5xl mx-auto space-y-20 md:space-y-28">

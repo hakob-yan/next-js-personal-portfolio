@@ -6,15 +6,12 @@ import { Button } from "@/components/Button";
 export function HeroSection() {
   return (
     <section
-      id={SECTION_IDS.hero}
       aria-label="Introduction"
       className="relative flex min-h-[80vh] items-center py-16"
     >
       <div className="mx-auto flex w-full max-w-6xl flex-col-reverse items-center gap-12 md:flex-row md:items-center md:justify-between md:gap-20">
-
         {/* LEFT CONTENT */}
         <div className="max-w-xl text-center md:text-left space-y-6">
-
           {/* Title */}
           <p className="text-xs uppercase tracking-[0.35em] text-[var(--color-primary)] font-semibold">
             {PROFILE.title}
@@ -49,7 +46,6 @@ export function HeroSection() {
 
           {/* Actions */}
           <div className="flex flex-wrap justify-center md:justify-start gap-3 pt-4">
-
             <Button
               href="#projects"
               variant="primary"
@@ -69,10 +65,7 @@ export function HeroSection() {
             )}
 
             {PROFILE.links.github && (
-              <Button
-                href={PROFILE.links.github}
-                className="px-4 py-2 text-sm"
-              >
+              <Button href={PROFILE.links.github} className="px-4 py-2 text-sm">
                 GitHub
               </Button>
             )}
@@ -85,24 +78,19 @@ export function HeroSection() {
                 LinkedIn
               </Button>
             )}
-
           </div>
         </div>
 
         {/* AVATAR */}
         {PROFILE.avatar && (
           <div className="relative flex-shrink-0">
-
             <div className="relative h-52 w-52 sm:h-60 sm:w-60 md:h-72 md:w-72">
-
               {/* Glow */}
               <div className="absolute inset-0 rounded-full bg-[var(--color-primary)] blur-3xl opacity-30"></div>
 
               {/* Border */}
               <div className="relative h-full w-full rounded-full p-[3px] bg-[var(--color-primary)] shadow-2xl">
-
                 <div className="relative h-full w-full overflow-hidden rounded-full bg-white dark:bg-neutral-900">
-
                   <Image
                     src={PROFILE.avatar.src}
                     alt={PROFILE.avatar.alt}
@@ -111,15 +99,11 @@ export function HeroSection() {
                     priority
                     className="object-cover"
                   />
-
                 </div>
               </div>
-
             </div>
-
           </div>
         )}
-
       </div>
     </section>
   );
