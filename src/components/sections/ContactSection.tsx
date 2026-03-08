@@ -57,9 +57,9 @@ export function ContactSection() {
           className="flex items-center gap-2 px-6 py-2.5 text-sm transition"
         >
           <FileText size={16} />
-          Download Resume
+          Download CV
         </Button>
-        ,
+        
       </div>
     </section>
   );

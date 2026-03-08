@@ -47,6 +47,7 @@ export function HeroSection() {
           {/* Actions */}
           <div className="flex flex-wrap justify-center md:justify-start gap-3 pt-4">
             <Button
+              target="_self"
               href="#projects"
               variant="primary"
               className="px-6 py-2.5 text-sm font-medium shadow-md hover:shadow-lg"
