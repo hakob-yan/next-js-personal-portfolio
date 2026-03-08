@@ -33,8 +33,8 @@ export default function animate(canvas: HTMLCanvasElement): IAnimate {
   let animationId: number | null = null;
 
   window.addEventListener("mousemove", (event) => {
-    mouse.x = event.clientX + window.pageXOffset;
-    mouse.y = event.clientY + window.pageYOffset;
+    mouse.x = event.clientX;
+    mouse.y = event.clientY;
     mouse.radius = mouseRadius;
   });
 

@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: `${PROFILE.name} · ${PROFILE.title}`,
-  description: `${PROFILE.title} · ${PROFILE.primaryStack}`,
+  description: `${PROFILE.title}`,
 };
 
 export default function RootLayout({
