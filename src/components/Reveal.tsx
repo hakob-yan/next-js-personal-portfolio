@@ -24,7 +24,7 @@ export function Reveal({ children, delay = 0 }: RevealProps) {
           }
         });
       },
-      { threshold: 0.15 },
+      { threshold: 0.05 },
     );
 
     observer.observe(node);
