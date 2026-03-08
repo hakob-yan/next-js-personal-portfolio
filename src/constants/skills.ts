@@ -1,91 +1,77 @@
-export type SkillGroup = {
-  label: string;
-  items: string[];
-};
-
-export const SKILL_GROUPS: SkillGroup[] = [
+export const SKILL_GROUPS = [
   {
-    label: "Frontend",
-    items: [
-      "JavaScript (ES6+)",
-      "TypeScript",
+    key: "frontend",
+    title: "Frontend Engineering",
+    description:
+      "Designing performant, maintainable user interfaces and complex client-side applications.",
+    skills: [
       "React",
       "Next.js",
+      "TypeScript",
       "Redux Toolkit",
-      "MobX",
       "GraphQL",
       "Tailwind CSS",
-      "Material-UI",
-      "Styled Components",
       "D3.js",
       "Micro Frontends",
     ],
   },
   {
-    label: "Backend",
-    items: [
+    key: "backend",
+    title: "Backend Systems",
+    description:
+      "Building scalable APIs, event-driven services, and distributed backend architectures.",
+    skills: [
       "Node.js",
       "Express",
       "REST APIs",
       "WebSockets",
-      "RabbitMQ",
       "Microservices",
       "Event-Driven Architecture",
-      "Serverless (AWS Lambda)",
-      "Authentication & Authorization (JWT, 2FA)",
-      "Performance Optimization",
-      "Security (OWASP)",
-      "Load Balancing",
-      "Horizontal Scaling",
-      "Design Patterns",
-      "SOLID Principles",
-      "Python",
+      "RabbitMQ",
+      "Authentication (JWT, 2FA)",
     ],
   },
   {
-    label: "Databases & Data",
-    items: [
+    key: "databases",
+    title: "Data & Storage",
+    description:
+      "Designing efficient data models, caching strategies, and high-performance queries.",
+    skills: [
       "PostgreSQL",
       "MongoDB",
       "MySQL",
       "Redis",
-      "Indexing",
       "Query Optimization",
+      "Indexing",
       "Caching",
       "Data Validation",
     ],
   },
   {
-    label: "Testing & Quality",
-    items: [
+    key: "cloud",
+    title: "Cloud & Infrastructure",
+    description:
+      "Deploying resilient systems with containerization, CI/CD pipelines, and cloud services.",
+    skills: [
+      "AWS",
+      "Docker",
+      "CI/CD",
+      "Serverless (Lambda)",
+      "Monitoring",
+      "Deployment Automation",
+    ],
+  },
+  {
+    key: "testing",
+    title: "Testing & Quality",
+    description:
+      "Ensuring reliability through automated testing, coverage standards, and end-to-end validation.",
+    skills: [
       "Jest",
       "React Testing Library",
       "Cypress",
       "Playwright",
-      "Test Coverage & Quality Standards",
-    ],
-  },
-  {
-    label: "Cloud, DevOps & Tooling",
-    items: [
-      "Docker",
-      "AWS (Lambda, S3)",
-      "CI/CD",
-      "Git",
-      "Containerization",
-      "Monitoring & Deployment Automation",
-    ],
-  },
-  {
-    label: "Architecture & Practices",
-    items: [
-      "Domain-Driven Design",
-      "Event-Driven Architectures",
-      "Microservices",
-      "Monoliths with clear boundaries",
-      "Code review and mentoring",
-      "Agile / Scrum collaboration",
+      "Test Coverage",
     ],
   },
 ];
-

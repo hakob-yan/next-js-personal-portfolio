@@ -1,14 +1,12 @@
 import React from "react";
-import {
-  BUTTON_BASE,
-  BUTTON_VARIANTS,
-  type ButtonVariant,
-} from "./types";
+import Link from "next/link";
+import { BUTTON_BASE, BUTTON_VARIANTS, type ButtonVariant } from "./types";
 
 type CommonProps = {
   variant?: ButtonVariant;
   className?: string;
   children: React.ReactNode;
+  target?: string;
 };
 
 type AnchorProps = CommonProps &
@@ -25,18 +23,28 @@ type ButtonProps = AnchorProps | NativeButtonProps;
 
 export function Button(props: ButtonProps) {
   const { variant = "primary", className = "", children, ...rest } = props;
-  const classes = `${BUTTON_BASE} ${BUTTON_VARIANTS[variant]} ${className}`.trim();
+
+  const classes =
+    `${BUTTON_BASE} ${BUTTON_VARIANTS[variant]} ${className}`.trim();
 
   if ("href" in props && props.href) {
     const { href, ...anchorRest } = rest as AnchorProps;
+
     return (
-      <a href={href} className={classes} {...anchorRest}>
+      <Link
+        href={href}
+        className={classes}
+        target={rest.target || "_blank"}
+        rel="noopener noreferrer"
+        {...anchorRest}
+      >
         {children}
-      </a>
+      </Link>
     );
   }
 
   const buttonRest = rest as NativeButtonProps;
+
   return (
     <button className={classes} {...buttonRest}>
       {children}
@@ -45,4 +53,3 @@ export function Button(props: ButtonProps) {
 }
 
 export default Button;
-

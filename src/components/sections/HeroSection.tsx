@@ -8,36 +8,85 @@ export function HeroSection() {
     <section
       id={SECTION_IDS.hero}
       aria-label="Introduction"
-      className="relative min-h-[70vh] flex flex-col justify-center gap-10 md:gap-14 py-10"
+      className="relative min-h-[75vh] flex flex-col justify-center py-12"
     >
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-10 md:gap-16">
-        
-        {/* Text */}
-        <div className="space-y-6 max-w-2xl">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-12 md:gap-20">
+        {/* Left */}
+        <div className="max-w-2xl space-y-6">
+          {/* Title */}
           <p className="text-xs md:text-sm uppercase tracking-[0.35em] text-[var(--color-primary)] font-medium">
             {PROFILE.title}
           </p>
 
-          <h1 className="text-4xl md:text-6xl font-bold leading-[1.1] tracking-tight">
+          {/* Name */}
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-[1.1]">
             {PROFILE.name}
           </h1>
 
-          <p className="text-lg md:text-xl text-neutral-600 dark:text-neutral-300 leading-relaxed">
+          {/* Headline */}
+          <h2 className="text-xl md:text-2xl font-semibold text-neutral-800 dark:text-neutral-200">
             {PROFILE.tagline}
+          </h2>
+
+          {/* Short description */}
+          <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            {PROFILE.description}
           </p>
 
-          <div className="text-sm md:text-base text-neutral-600 dark:text-neutral-400 leading-relaxed space-y-1">
-            {PROFILE.bio.map((line) => (
-              <p key={line}>{line}</p>
+          {/* Core stack */}
+          <div className="flex flex-wrap gap-2 pt-2">
+            {PROFILE.coreStack.map((tech) => (
+              <span
+                key={tech}
+                className="text-xs md:text-sm px-3 py-1 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300"
+              >
+                {tech}
+              </span>
             ))}
+          </div>
+
+          {/* Actions */}
+          <div className="flex flex-wrap items-center gap-4 pt-4">
+            <Button
+              target="_self"
+              href="#projects"
+              variant="primary"
+              className="px-6 py-2.5 text-sm font-medium shadow-md hover:shadow-lg"
+            >
+              View Projects
+            </Button>
+
+            {PROFILE.links.resume && (
+              <Button
+                href={PROFILE.links.resume}
+                variant="outline"
+                className="px-6 py-2.5 text-sm"
+              >
+                Download CV
+              </Button>
+            )}
+
+            {PROFILE.links.github && (
+              <Button href={PROFILE.links.github} className="px-4 py-2 text-sm">
+                GitHub
+              </Button>
+            )}
+
+            {PROFILE.links.linkedin && (
+              <Button
+                href={PROFILE.links.linkedin}
+                className="px-4 py-2 text-sm"
+              >
+                LinkedIn
+              </Button>
+            )}
           </div>
         </div>
 
         {/* Avatar */}
         {PROFILE.avatar && (
-          <div className="relative flex-shrink-0 self-start md:self-auto animate-float-slow">
-            <div className="relative h-60 w-60 md:h-72 md:w-72 rounded-full p-[3px] bg-[var(--color-primary)]  shadow-4xl">
-              
+          <div className="relative flex-shrink-0 self-start md:self-auto">
+            <div className="relative h-60 w-60 md:h-72 md:w-72 rounded-full p-[3px] bg-[var(--color-primary)] shadow-4xl">
               <div className="relative h-full w-full rounded-full overflow-hidden bg-white dark:bg-neutral-900">
                 <Image
                   src={PROFILE.avatar.src}
@@ -48,45 +97,10 @@ export function HeroSection() {
                   className="object-cover"
                 />
               </div>
-
             </div>
 
-            {/* subtle glow */}
             <div className="absolute inset-0 -z-10 blur-3xl opacity-40 bg-[var(--color-primary)] rounded-full"></div>
           </div>
-        )}
-      </div>
-
-      {/* Actions */}
-      <div className="flex flex-wrap items-center gap-4 pt-2">
-        {PROFILE.links.email && (
-          <Button
-            href={`mailto:${PROFILE.links.email}`}
-            variant="primary"
-            className="px-6 py-2.5 text-sm font-medium shadow-md hover:shadow-lg transition"
-          >
-            Contact Me
-          </Button>
-        )}
-
-        {PROFILE.links.github && (
-          <Button
-            href={PROFILE.links.github}
-            variant="outline"
-            className="px-6 py-2.5 text-sm"
-          >
-            GitHub
-          </Button>
-        )}
-
-        {PROFILE.links.linkedin && (
-          <Button
-            href={PROFILE.links.linkedin}
-            variant="outline"
-            className="px-6 py-2.5 text-sm"
-          >
-            LinkedIn
-          </Button>
         )}
       </div>
     </section>
