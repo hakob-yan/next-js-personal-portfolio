@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { SECTION_IDS } from "@/constants/navigation";
 import { motion, AnimatePresence } from "framer-motion";
+import useNavItemActive from "@/hooks/useNavItemActive";
 
 // Map section IDs to proper icons
 const ICON_MAP: Record<string, React.ElementType> = {
@@ -29,29 +30,24 @@ interface NavButtonProps {
   label: string;
   icon?: React.ElementType;
   onClick?: () => void;
-  isMobile?: boolean;
+  isActive?: boolean;
 }
 const NavButton: React.FC<NavButtonProps> = ({
   href,
   label,
   icon: Icon,
   onClick,
-  isMobile = false,
+  isActive = false,
 }) => (
   <a
     href={href}
     onClick={onClick}
-    className={`flex items-center gap-2 font-medium transition-colors ${
-      isMobile
-        ? "w-full px-4 py-2 rounded-md hover:bg-[var(--surface-muted)]"
-        : "relative group px-2 py-1 hover:text-[var(--color-primary)]"
-    }`}
+    className={`flex items-center gap-2 font-medium transition-colors ${isActive ? "text-[var(--color-primary)]" : "hover:text-[var(--color-primary)]"} mr-auto relative group px-2 py-1`}
   >
     {Icon && <Icon className="w-5 h-5 text-[var(--color-primary)]" />}
     {label}
-    {!isMobile && (
-      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[var(--color-primary)] transition-all group-hover:w-full"></span>
-    )}
+
+    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[var(--color-primary)] transition-all group-hover:w-full"></span>
   </a>
 );
 
@@ -71,26 +67,33 @@ const ProfileBadge: React.FC = () => (
 const NavLinks: React.FC<{ onClick?: () => void; isMobile?: boolean }> = ({
   onClick,
   isMobile = false,
-}) => (
-  <div
-    className={`flex ${isMobile ? "flex-col gap-4" : "flex-row gap-6"} items-center`}
-  >
-    {Object.entries(SECTION_IDS).map(([key, id]) => {
-      const Icon = ICON_MAP[id];
-      const label = key.charAt(0).toUpperCase() + key.slice(1); // Capitalize
-      return (
-        <NavButton
-          key={id}
-          href={`#${id}`}
-          label={label}
-          icon={Icon}
-          onClick={onClick}
-          isMobile={isMobile}
-        />
-      );
-    })}
-  </div>
-);
+}) => {
+  const activeId = useNavItemActive(Object.values(SECTION_IDS));
+
+  return (
+    <div
+      className={`flex ${
+        isMobile ? "flex-col gap-4" : "flex-row gap-6"
+      } items-center`}
+    >
+      {Object.entries(SECTION_IDS).map(([key, id]) => {
+        const Icon = ICON_MAP[id];
+        const label = key.charAt(0).toUpperCase() + key.slice(1);
+
+        return (
+          <NavButton
+            key={id}
+            href={`#${id}`}
+            label={label}
+            icon={Icon}
+            isActive={activeId === id}
+            onClick={onClick}
+          />
+        );
+      })}
+    </div>
+  );
+};
 
 const NavBar: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -127,7 +130,7 @@ const NavBar: React.FC = () => {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            className="md:hidden absolute top-20 left-4 right-4 bg-[var(--surface-elevated)] border border-[var(--border-subtle)] rounded-lg flex flex-col items-start py-4 shadow-lg"
+            className="md:hidden p-2 absolute top-20 left-4 right-4 bg-[var(--surface-elevated)] border border-[var(--border-subtle)] rounded-lg flex flex-col items-start py-4 shadow-lg"
             initial="hidden"
             animate="visible"
             exit="exit"
