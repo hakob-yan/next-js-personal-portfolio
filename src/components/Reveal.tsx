@@ -5,9 +5,10 @@ import React, { useEffect, useRef, useState } from "react";
 type RevealProps = {
   children: React.ReactNode;
   delay?: number;
+  threshold?: number;
 };
 
-export function Reveal({ children, delay = 0 }: RevealProps) {
+export function Reveal({ children, delay = 0, threshold = 0.05 }: RevealProps) {
   const ref = useRef<HTMLDivElement | null>(null);
   const [visible, setVisible] = useState(false);
 
@@ -24,7 +25,7 @@ export function Reveal({ children, delay = 0 }: RevealProps) {
           }
         });
       },
-      { threshold: 0.05 },
+      { threshold },
     );
 
     observer.observe(node);
@@ -32,7 +33,7 @@ export function Reveal({ children, delay = 0 }: RevealProps) {
     return () => {
       observer.disconnect();
     };
-  }, []);
+  }, [threshold]);
 
   return (
     <div
@@ -44,4 +45,3 @@ export function Reveal({ children, delay = 0 }: RevealProps) {
     </div>
   );
 }
-

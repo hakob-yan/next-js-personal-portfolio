@@ -8,37 +8,39 @@ export function HeroSection() {
     <section
       id={SECTION_IDS.hero}
       aria-label="Introduction"
-      className="relative min-h-[75vh] flex flex-col justify-center py-12"
+      className="relative flex min-h-[80vh] items-center py-16"
     >
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-12 md:gap-20">
-        {/* Left */}
-        <div className="max-w-2xl space-y-6">
+      <div className="mx-auto flex w-full max-w-6xl flex-col-reverse items-center gap-12 md:flex-row md:items-center md:justify-between md:gap-20">
+
+        {/* LEFT CONTENT */}
+        <div className="max-w-xl text-center md:text-left space-y-6">
+
           {/* Title */}
-          <p className="text-xs md:text-sm uppercase tracking-[0.35em] text-[var(--color-primary)] font-medium">
+          <p className="text-xs uppercase tracking-[0.35em] text-[var(--color-primary)] font-semibold">
             {PROFILE.title}
           </p>
 
           {/* Name */}
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-[1.1]">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.05]">
             {PROFILE.name}
           </h1>
 
-          {/* Headline */}
-          <h2 className="text-xl md:text-2xl font-semibold text-neutral-800 dark:text-neutral-200">
+          {/* Tagline */}
+          <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-neutral-800 dark:text-neutral-200">
             {PROFILE.tagline}
           </h2>
 
-          {/* Short description */}
+          {/* Description */}
           <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed">
             {PROFILE.description}
           </p>
 
-          {/* Core stack */}
-          <div className="flex flex-wrap gap-2 pt-2">
+          {/* Core Stack */}
+          <div className="flex flex-wrap justify-center md:justify-start gap-2 pt-2">
             {PROFILE.coreStack.map((tech) => (
               <span
                 key={tech}
-                className="text-xs md:text-sm px-3 py-1 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300"
+                className="rounded-full bg-neutral-100 dark:bg-neutral-800 px-3 py-1 text-xs md:text-sm text-neutral-700 dark:text-neutral-300"
               >
                 {tech}
               </span>
@@ -46,9 +48,9 @@ export function HeroSection() {
           </div>
 
           {/* Actions */}
-          <div className="flex flex-wrap items-center gap-4 pt-4">
+          <div className="flex flex-wrap justify-center md:justify-start gap-3 pt-4">
+
             <Button
-              target="_self"
               href="#projects"
               variant="primary"
               className="px-6 py-2.5 text-sm font-medium shadow-md hover:shadow-lg"
@@ -67,7 +69,10 @@ export function HeroSection() {
             )}
 
             {PROFILE.links.github && (
-              <Button href={PROFILE.links.github} className="px-4 py-2 text-sm">
+              <Button
+                href={PROFILE.links.github}
+                className="px-4 py-2 text-sm"
+              >
                 GitHub
               </Button>
             )}
@@ -80,28 +85,41 @@ export function HeroSection() {
                 LinkedIn
               </Button>
             )}
+
           </div>
         </div>
 
-        {/* Avatar */}
+        {/* AVATAR */}
         {PROFILE.avatar && (
-          <div className="relative flex-shrink-0 self-start md:self-auto">
-            <div className="relative h-60 w-60 md:h-72 md:w-72 rounded-full p-[3px] bg-[var(--color-primary)] shadow-4xl">
-              <div className="relative h-full w-full rounded-full overflow-hidden bg-white dark:bg-neutral-900">
-                <Image
-                  src={PROFILE.avatar.src}
-                  alt={PROFILE.avatar.alt}
-                  fill
-                  sizes="288px"
-                  priority
-                  className="object-cover"
-                />
+          <div className="relative flex-shrink-0">
+
+            <div className="relative h-52 w-52 sm:h-60 sm:w-60 md:h-72 md:w-72">
+
+              {/* Glow */}
+              <div className="absolute inset-0 rounded-full bg-[var(--color-primary)] blur-3xl opacity-30"></div>
+
+              {/* Border */}
+              <div className="relative h-full w-full rounded-full p-[3px] bg-[var(--color-primary)] shadow-2xl">
+
+                <div className="relative h-full w-full overflow-hidden rounded-full bg-white dark:bg-neutral-900">
+
+                  <Image
+                    src={PROFILE.avatar.src}
+                    alt={PROFILE.avatar.alt}
+                    fill
+                    sizes="(max-width: 768px) 220px, 288px"
+                    priority
+                    className="object-cover"
+                  />
+
+                </div>
               </div>
+
             </div>
 
-            <div className="absolute inset-0 -z-10 blur-3xl opacity-40 bg-[var(--color-primary)] rounded-full"></div>
           </div>
         )}
+
       </div>
     </section>
   );

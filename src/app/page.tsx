@@ -54,7 +54,7 @@ export default function Home() {
             <Reveal>
               <HeroSection />
             </Reveal>
-            <Reveal delay={80}>
+            <Reveal delay={80} threshold={0.01}>
               <ProjectsSection />
             </Reveal>
             <Reveal delay={120}>
