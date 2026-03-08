@@ -9,6 +9,7 @@ export const SKILL_GROUPS = [
       "Next.js",
       "TypeScript",
       "Redux Toolkit",
+      "RTK Query",
       "GraphQL",
       "Tailwind CSS",
       "D3.js",

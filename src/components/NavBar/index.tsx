@@ -53,10 +53,10 @@ const NavButton: React.FC<NavButtonProps> = ({
 
 // Profile Badge
 const ProfileBadge: React.FC = () => (
-  <div className="flex items-center gap-3">
+  <div className="items-center gap-3 flex lg:hidden xl:flex">
     <div className="flex flex-col leading-tight">
-      <span className="text-sm md:text-base font-semibold">{PROFILE.name}</span>
-      <span className="text-xs md:text-sm text-[var(--text-secondary)]">
+      <span className="text-sm lg:text-base font-semibold">{PROFILE.name}</span>
+      <span className="text-xs lg:text-sm text-[var(--text-secondary)]">
         {PROFILE.title}
       </span>
     </div>
@@ -106,17 +106,17 @@ const NavBar: React.FC = () => {
   };
 
   return (
-    <nav className="fixed w-full top-0 z-50 bg-[var(--surface-elevated)]/95 backdrop-blur-md border-b border-[var(--border-subtle)] h-20 flex items-center justify-between px-6 md:px-20">
+    <nav className="fixed w-full top-0 z-50 bg-[var(--surface-elevated)]/95 backdrop-blur-md border-b border-[var(--border-subtle)] h-20 flex items-center justify-between px-6 lg:px-20">
       {/* Profile */}
       <ProfileBadge />
 
       {/* Desktop Navigation */}
-      <div className="hidden md:flex">
+      <div className="hidden lg:flex">
         <NavLinks />
       </div>
 
       {/* Mobile Hamburger */}
-      <div className="md:hidden">
+      <div className="lg:hidden">
         <button
           aria-label="Toggle menu"
           onClick={() => setMenuOpen((prev) => !prev)}
@@ -130,7 +130,7 @@ const NavBar: React.FC = () => {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            className="md:hidden p-2 absolute top-20 left-4 right-4 bg-[var(--surface-elevated)] border border-[var(--border-subtle)] rounded-lg flex flex-col items-start py-4 shadow-lg"
+            className="lg:hidden p-2 absolute top-20 left-4 right-4 bg-[var(--surface-elevated)] border border-[var(--border-subtle)] rounded-lg flex flex-col items-start py-4 shadow-lg"
             initial="hidden"
             animate="visible"
             exit="exit"

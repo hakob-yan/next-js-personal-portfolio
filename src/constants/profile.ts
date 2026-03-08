@@ -26,7 +26,7 @@ export const PROFILE = {
     email: "devhakob@gmail.com",
     github: "https://github.com/hakob-yan",
     linkedin: "https://www.linkedin.com/in/hakob-yan",
-    resume: "#",
+    resume: "/Hakob_CV.pdf",
   },
 
   contact: {
